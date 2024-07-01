@@ -58,7 +58,7 @@ const handleRequest = async (req, res) => {
     const response = {
       client_ip: ip,
       location: location.city,
-      greeting: `Hello, ${visitor_name}!, the temperature is ${weather.main.temp} degrees Celcius in ${location.city}`,
+      greeting: `Hello, ${name}!, the temperature is ${weatherInfo.main.temp} degrees Celcius in ${location.city}`,
     };
 
     res.status(200).json(response);

@@ -37,13 +37,12 @@ const handleRequest = async (req, res) => {
 
     const ipAddresses =
       req.headers["x-forwarded-for"] || req.connection.remoteAddress;
-    // const ipAddr = ipAddresses.split(",").map((ip) => ip.trim());
-    // const ip = ipAddr[0];
-    const ip = `197.210.78.88`;
-    console.log(ip);
+    const ipAddr = ipAddresses.split(",").map((ip) => ip.trim());
+    const ip = ipAddr[0];
+    // console.log(ip);
 
     const location = await fetchLocation(ip);
-    console.log(location);
+    // console.log(location);
     if (!location || !location.loc) {
       throw new Error("Unable to fetch location data");
     }

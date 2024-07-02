@@ -1,6 +1,7 @@
 require("dotenv").config();
 const axios = require("axios");
 
+//function to get location data based on IP address
 const fetchLocation = async (ip) => {
   const apiKey = process.env.IP_INFO_API_KEY;
   const url = `https://ipinfo.io/${ip}?token=${apiKey}`;
@@ -13,6 +14,7 @@ const fetchLocation = async (ip) => {
   }
 };
 
+//function to get weather data from API based on location gotten
 const fetchWeather = async (latitude, longitude) => {
   const apiKey = process.env.WEATHER_API_KEY;
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
@@ -25,6 +27,7 @@ const fetchWeather = async (latitude, longitude) => {
   }
 };
 
+//controller to handle both location and weather requests
 const handleRequest = async (req, res) => {
   try {
     let { visitor_name: name } = req.query;

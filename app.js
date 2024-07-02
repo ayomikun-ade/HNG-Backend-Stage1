@@ -10,12 +10,6 @@ app.use(express.json());
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.set("true proxy", true);
 
-app.use((req, res, next) => {
-  const userIP = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
-  req.userIP = userIP;
-  next();
-});
-
 app.get("/api/hello", handleRequest);
 
 app.get("/", (req, res) => {
@@ -26,6 +20,7 @@ app.get("/", (req, res) => {
     );
 });
 
+//listening on port
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
